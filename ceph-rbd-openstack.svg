@@ -1,0 +1,78 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with ASCIIToSVG (http://9vx.org/~dho/a2s/) -->
+<svg width="189px" height="304px" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <filter id="dsFilterNoBlur" width="150%" height="150%">
+      <feOffset result="offOut" in="SourceGraphic" dx="3" dy="3"/>
+      <feColorMatrix result="matrixOut" in="offOut" type="matrix" values="0.2 0 0 0 0 0 0.2 0 0 0 0 0 0.2 0 0 0 0 0 1 0"/>
+      <feBlend in="SourceGraphic" in2="matrixOut" mode="normal"/>
+    </filter>
+    <filter id="dsFilter" width="150%" height="150%">
+      <feOffset result="offOut" in="SourceGraphic" dx="3" dy="3"/>
+      <feColorMatrix result="matrixOut" in="offOut" type="matrix" values="0.2 0 0 0 0 0 0.2 0 0 0 0 0 0.2 0 0 0 0 0 1 0"/>
+      <feGaussianBlur result="blurOut" in="matrixOut" stdDeviation="3"/>
+      <feBlend in="SourceGraphic" in2="blurOut" mode="normal"/>
+    </filter>
+    <marker id="iPointer"
+      viewBox="0 0 10 10" refX="5" refY="5" 
+      markerUnits="strokeWidth"
+      markerWidth="8" markerHeight="7"
+      orient="auto">
+      <path d="M 10 0 L 10 10 L 0 5 z" />
+    </marker>
+    <marker id="Pointer"
+      viewBox="0 0 10 10" refX="5" refY="5" 
+      markerUnits="strokeWidth"
+      markerWidth="8" markerHeight="7"
+      orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" />
+    </marker>
+  </defs><g id="boxes" stroke="black" stroke-width="2" fill="none" >
+<g id="group0">
+	<path id="path0" filter="url(#dsFilter)" fill="#fff" d="M 4.5 18 Q 4.5 8 14.5 8 L 102.5 8 Q 112.5 8 112.5 18 L 112.5 62 Q 112.5 72 102.5 72 L 14.5 72 Q 4.5 72 4.5 62 Z" />
+	<text x="17.1" y="28.8" id="text0" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >OpenStack </text>
+
+	<text x="17.1" y="60.8" id="text0" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >libvirt </text>
+
+</g>
+<g id="group6">
+	<path id="path6" filter="url(#dsFilter)" fill="#fff" d="M 4.5 146 Q 4.5 136 14.5 136 L 174.5 136 Q 184.5 136 184.5 146 L 184.5 222 Q 184.5 232 174.5 232 L 14.5 232 Q 4.5 232 4.5 222 Z" />
+	<text x="17.1" y="156.8" id="text6" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >QEMU </text>
+
+	<text x="17.1" y="188.8" id="text6" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >librbd </text>
+
+	<text x="17.1" y="220.8" id="text6" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >librados </text>
+
+</g>
+<g id="group14">
+	<path id="path14" filter="url(#dsFilter)" fill="#fff" d="M 4.5 258 Q 4.5 248 14.5 248 L 57.5 248 Q 67.5 248 67.5 258 L 67.5 270 Q 67.5 280 57.5 280 L 14.5 280 Q 4.5 280 4.5 270 Z" />
+	<text x="17.1" y="268.8" id="text14" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >OSDs </text>
+
+</g>
+<g id="group16">
+	<path id="path16" filter="url(#dsFilter)" fill="#fff" d="M 85.5 258 Q 85.5 248 95.5 248 L 174.5 248 Q 184.5 248 184.5 258 L 184.5 270 Q 184.5 280 174.5 280 L 95.5 280 Q 85.5 280 85.5 270 Z" />
+	<text x="98.1" y="268.8" id="text16" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >Monitors </text>
+
+</g>
+</g>
+<g id="lines" stroke="black" stroke-width="2" fill="none" >
+<g id="group24">
+	<path id="path24" d="M 4.5 40 L 112.5 40 " />
+</g>
+<g id="group33">
+	<path id="path33" d="M 4.5 168 L 184.5 168 " />
+</g>
+<g id="group36">
+	<path id="path36" d="M 4.5 200 L 184.5 200 " />
+</g>
+<g id="group125">
+	<path id="path125" marker-end="url(#Pointer)" d="M 49.5 88 L 49.5 120 " />
+</g>
+</g>
+<g id="text" fill="black" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >
+<text x="53.1" y="108.8" id="text2" fill="#000" >configures</text>
+</g>
+</svg>

@@ -1,7 +1,7 @@
 FONTDIR ?= /usr/share/fonts/truetype/ttf-dejavu
 FONTFILE ?= DejaVuSans.ttf
 
-IMAGES = Vector_RGB_MirantisLogo.pdf ceph-rbd.pdf
+IMAGES = Vector_RGB_MirantisLogo.pdf ceph-rbd.pdf ceph-rbd-openstack.pdf
 
 all: fuel-ceph.pdf
 

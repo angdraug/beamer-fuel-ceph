@@ -63,11 +63,42 @@
 			snapshotting, replication, and consistency.
 		\item[Block Storage] RBD block devices are thinly
 			provisioned over RADOS objects and can be
-			accessed by Qemu via librbd library.\\
+			accessed by QEMU via librbd library.\\
 			\includegraphics[height=3cm]{ceph-rbd}
 		\item[File Storage] CephFS metadata servers (MDS)
 			provide a POSIX-compliant overlay ovre RADOS.
 	\end{description}
+\end{frame}
+
+\begin{frame}
+	\frametitle{\insertframenumber{}. How does Ceph fit into
+	OpenStack?}
+	\begin{columns}
+		\column{.6\textwidth}
+		RBD drivers for OpenStack components configure QEMU
+		interface to librbd.
+
+		\vspace{2ex}
+		Ceph benefits:
+		\begin{itemize}
+			\item Multi-node striping and redundancy for
+				block storage (Cinder volumes and Nova
+				ephemeral drives)
+			\item Copy-on-write cloning of images to
+				volumes and instances
+			\item Unified storage pool for all types of
+				storage (object, block, POSIX)
+			\item Live migration of Ceph-backed instances
+		\end{itemize}
+
+		\column{.35\textwidth}
+		\includegraphics[height=6.5cm]{ceph-rbd-openstack}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{\insertframenumber{}. What can you make Ceph do with
+	Fuel?}
 \end{frame}
 
 \end{document}
