@@ -32,27 +32,27 @@
     </marker>
   </defs><g id="boxes" stroke="black" stroke-width="2" fill="none" >
 <g id="group0">
-	<path id="path0" filter="url(#dsFilter)" fill="#fff" d="M 4.5 18 Q 4.5 8 14.5 8 L 138.5 8 Q 148.5 8 148.5 18 L 148.5 30 Q 148.5 40 138.5 40 L 14.5 40 Q 4.5 40 4.5 30 Z" />
+	<path id="path0" filter="url(#dsFilter)" fill="#fff" d="M 4.5 8 L 148.5 8 L 148.5 40 L 4.5 40 Z" />
 	<text x="17.1" y="28.8" id="text0" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >Kernel Module </text>
 
 </g>
 <g id="group2">
-	<path id="path2" filter="url(#dsFilter)" fill="#fff" d="M 175.5 18 Q 175.5 8 185.5 8 L 246.5 8 Q 256.5 8 256.5 18 L 256.5 30 Q 256.5 40 246.5 40 L 185.5 40 Q 175.5 40 175.5 30 Z" />
+	<path id="path2" filter="url(#dsFilter)" fill="#fff" d="M 175.5 8 L 256.5 8 L 256.5 40 L 175.5 40 Z" />
 	<text x="188.1" y="28.8" id="text2" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >librbd </text>
 
 </g>
 <g id="group8">
-	<path id="path8" filter="url(#dsFilter)" fill="#fff" d="M 4.5 66 Q 4.5 56 14.5 56 L 246.5 56 Q 256.5 56 256.5 66 L 256.5 78 Q 256.5 88 246.5 88 L 14.5 88 Q 4.5 88 4.5 78 Z" />
+	<path id="path8" filter="url(#dsFilter)" fill="#fff" d="M 4.5 56 L 256.5 56 L 256.5 88 L 4.5 88 Z" />
 	<text x="17.1" y="76.8" id="text8" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >RADOS Protocol </text>
 
 </g>
 <g id="group12">
-	<path id="path12" filter="url(#dsFilter)" fill="#fff" d="M 4.5 114 Q 4.5 104 14.5 104 L 57.5 104 Q 67.5 104 67.5 114 L 67.5 126 Q 67.5 136 57.5 136 L 14.5 136 Q 4.5 136 4.5 126 Z" />
+	<path id="path12" filter="url(#dsFilter)" fill="#fff" d="M 4.5 104 L 67.5 104 L 67.5 136 L 4.5 136 Z" />
 	<text x="17.1" y="124.8" id="text12" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >OSDs </text>
 
 </g>
 <g id="group14">
-	<path id="path14" filter="url(#dsFilter)" fill="#fff" d="M 157.5 114 Q 157.5 104 167.5 104 L 246.5 104 Q 256.5 104 256.5 114 L 256.5 126 Q 256.5 136 246.5 136 L 167.5 136 Q 157.5 136 157.5 126 Z" />
+	<path id="path14" filter="url(#dsFilter)" fill="#fff" d="M 157.5 104 L 256.5 104 L 256.5 136 L 157.5 136 Z" />
 	<text x="170.1" y="124.8" id="text14" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >Monitors </text>
 
 </g>

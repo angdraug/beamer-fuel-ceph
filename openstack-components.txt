@@ -1,8 +1,9 @@
-.------. provisions  .------.
-| Nova |------------>|  VM  |
-'------'             '------'
-                       ^  ^
-            provides   |  |  provides
-.--------. volumes for |  | images for .--------.
-| Cinder |-------------'  '------------| Glance |
-'--------'                             '--------'
+                                stores
+#------. provisions  #------. objects in  #-------.
+| Nova +------------>+  VM  +------------>| Swift |
+'------'             '------'             '-------'
+                       ^  ^                 ^ stores
+            provides   |  |    provides     | images in
+#--------. volumes for |  |   images for  #-+------.
+| Cinder +-------------'  '---------------+ Glance |
+'--------'                                '--------'

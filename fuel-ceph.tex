@@ -11,7 +11,7 @@
 \usepackage{graphicx}
 \usepackage{fancyvrb}
 %
-% Copyright (c) 2013  Mirantis, Inc.
+% Copyright (c) 2014  Mirantis, Inc.
 %
 %    Licensed under the Apache License, Version 2.0 (the "License"); you may
 %    not use this file except in compliance with the License. You may obtain
@@ -27,8 +27,8 @@
 %
 \title{Ceph in Mirantis OpenStack}
 %\author{\includegraphics[height=4cm, trim=3cm 2cm -5cm 4cm, clip]{Vector_RGB_MirantisLogo}\\Dmitry Borodaenko}
-\author{\includegraphics[height=4.5cm]{Vector_RGB_MirantisLogo}\\Dmitry Borodaenko}
-\date{Mountain View, 2013\\ Mirantis}
+\author{\includegraphics[height=5cm]{Vector_RGB_MirantisLogo}\\Dmitry Borodaenko}
+\date{Mountain View, 2014}
 %
 \begin{document}
 
@@ -64,7 +64,7 @@
 		\item[Block Storage] RBD block devices are thinly
 			provisioned over RADOS objects and can be
 			accessed by QEMU via librbd library.\\
-			\includegraphics[height=3cm]{ceph-rbd}
+			\includegraphics[height=2.5cm]{ceph-rbd}
 		\item[File Storage] CephFS metadata servers (MDS)
 			provide a POSIX-compliant overlay over RADOS.
 	\end{description}
@@ -76,14 +76,15 @@
 	\begin{description}
 		\item[OpenStack] is an open source cloud computing
 			platform.\\
-			\vspace{1.5ex}
-			\includegraphics[height=2.5cm]{openstack-components}
+			\vspace{0.5ex}
+			\includegraphics[height=1.9cm]{openstack-components}
 		\item[Mirantis] ships hardened OpenStack packages and
 			provides Fuel utility to simplify deployment of
 			OpenStack.
 		\item[Fuel] uses Cobbler, MCollective, and Puppet to
 			discover nodes, provision OS, and setup
-			OpenStack services.
+			OpenStack services.\\
+			\includegraphics[height=3.7cm]{fuel-components}
 	\end{description}
 \end{frame}
 
@@ -114,8 +115,19 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{\insertframenumber{}. What can you make Ceph do with
-	Fuel?}
+	\frametitle{\insertframenumber{}. What has Fuel ever done for Ceph?}
+
+	\begin{enumerate}
+		\item Deploys Ceph Monitors and OSDs on dedicated nodes
+			or in combination with OpenStack components.\\
+			\includegraphics[height=3.7cm]{openstack-nodes}
+		\item Creates partitions for OSDs when nodes are
+			provisioned.
+		\item Creates separate RADOS pools and sets up Cephx
+			authentication for Cinder, Glance, and Nova.
+		\item Deploys RADOS Gateway (S3 and Swift API frontend
+			to Ceph) behind HAProxy on controller nodes.
+	\end{enumerate}
 \end{frame}
 
 \end{document}
