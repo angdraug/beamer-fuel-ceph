@@ -1,0 +1,8 @@
+#!/bin/sh
+curl -T $1 http://api.a2saas.com/put.php | \
+	grep success | \
+	sed 's/^[^0-9]*\([0-9]*\).*$/\1/' | \
+	while read id
+	do
+		curl http://api.a2saas.com/view.php?id=$id > $2
+	done

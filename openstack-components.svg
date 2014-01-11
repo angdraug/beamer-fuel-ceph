@@ -1,0 +1,73 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with ASCIIToSVG (http://9vx.org/~dho/a2s/) -->
+<svg width="441px" height="144px" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <filter id="dsFilterNoBlur" width="150%" height="150%">
+      <feOffset result="offOut" in="SourceGraphic" dx="3" dy="3"/>
+      <feColorMatrix result="matrixOut" in="offOut" type="matrix" values="0.2 0 0 0 0 0 0.2 0 0 0 0 0 0.2 0 0 0 0 0 1 0"/>
+      <feBlend in="SourceGraphic" in2="matrixOut" mode="normal"/>
+    </filter>
+    <filter id="dsFilter" width="150%" height="150%">
+      <feOffset result="offOut" in="SourceGraphic" dx="3" dy="3"/>
+      <feColorMatrix result="matrixOut" in="offOut" type="matrix" values="0.2 0 0 0 0 0 0.2 0 0 0 0 0 0.2 0 0 0 0 0 1 0"/>
+      <feGaussianBlur result="blurOut" in="matrixOut" stdDeviation="3"/>
+      <feBlend in="SourceGraphic" in2="blurOut" mode="normal"/>
+    </filter>
+    <marker id="iPointer"
+      viewBox="0 0 10 10" refX="5" refY="5" 
+      markerUnits="strokeWidth"
+      markerWidth="8" markerHeight="7"
+      orient="auto">
+      <path d="M 10 0 L 10 10 L 0 5 z" />
+    </marker>
+    <marker id="Pointer"
+      viewBox="0 0 10 10" refX="5" refY="5" 
+      markerUnits="strokeWidth"
+      markerWidth="8" markerHeight="7"
+      orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" />
+    </marker>
+  </defs><g id="boxes" stroke="black" stroke-width="2" fill="none" >
+<g id="group0">
+	<path id="path0" filter="url(#dsFilter)" fill="#fff" d="M 4.5 18 Q 4.5 8 14.5 8 L 57.5 8 Q 67.5 8 67.5 18 L 67.5 30 Q 67.5 40 57.5 40 L 14.5 40 Q 4.5 40 4.5 30 Z" />
+	<text x="17.1" y="28.8" id="text0" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >Nova </text>
+
+</g>
+<g id="group2">
+	<path id="path2" filter="url(#dsFilter)" fill="#fff" d="M 193.5 18 Q 193.5 8 203.5 8 L 246.5 8 Q 256.5 8 256.5 18 L 256.5 30 Q 256.5 40 246.5 40 L 203.5 40 Q 193.5 40 193.5 30 Z" />
+	<text x="215.1" y="28.8" id="text2" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >VM </text>
+
+</g>
+<g id="group8">
+	<path id="path8" filter="url(#dsFilter)" fill="#fff" d="M 4.5 98 Q 4.5 88 14.5 88 L 75.5 88 Q 85.5 88 85.5 98 L 85.5 110 Q 85.5 120 75.5 120 L 14.5 120 Q 4.5 120 4.5 110 Z" />
+	<text x="17.1" y="108.8" id="text8" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >Cinder </text>
+
+</g>
+<g id="group10">
+	<path id="path10" filter="url(#dsFilter)" fill="#fff" d="M 355.5 98 Q 355.5 88 365.5 88 L 426.5 88 Q 436.5 88 436.5 98 L 436.5 110 Q 436.5 120 426.5 120 L 365.5 120 Q 355.5 120 355.5 110 Z" />
+	<text x="368.1" y="108.8" id="text10" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >Glance </text>
+
+</g>
+</g>
+<g id="lines" stroke="black" stroke-width="2" fill="none" >
+<g id="group91">
+	<path id="path91" marker-end="url(#Pointer)" d="M 76.5 24 L 184.5 24 " />
+</g>
+<g id="group114">
+	<path id="path114" marker-end="url(#Pointer)" d="M 94.5 104 L 201.5 104 Q 211.5 104 211.5 94 L 211.5 56 " />
+</g>
+<g id="group255">
+	<path id="path255" marker-start="url(#iPointer)" d="M 238.5 56 L 238.5 94 Q 238.5 104 248.5 104 L 346.5 104 " />
+</g>
+</g>
+<g id="text" fill="black" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >
+<text x="80.1" y="12.8" id="text0" fill="#000" >provisions </text>
+<text x="107.1" y="76.8" id="text3" fill="#000" >provides </text>
+<text x="260.1" y="76.8" id="text4" fill="#000" >provides</text>
+<text x="98.1" y="92.8" id="text5" fill="#000" >volumes for </text>
+<text x="251.1" y="92.8" id="text6" fill="#000" >images for </text>
+</g>
+</svg>

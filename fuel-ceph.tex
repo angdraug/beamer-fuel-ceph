@@ -2,7 +2,7 @@
 \usetheme{boxes}
 \setbeamertemplate{navigation symbols}{}
 %
-\definecolor{mirantisred}{RGB}{166,38,20}
+\definecolor{mirantisred}{RGB}{211,48,26}
 \setbeamercolor{titlelike}{fg=mirantisred}
 \setbeamercolor{structure}{fg=mirantisred}
 %
@@ -66,7 +66,24 @@
 			accessed by QEMU via librbd library.\\
 			\includegraphics[height=3cm]{ceph-rbd}
 		\item[File Storage] CephFS metadata servers (MDS)
-			provide a POSIX-compliant overlay ovre RADOS.
+			provide a POSIX-compliant overlay over RADOS.
+	\end{description}
+\end{frame}
+
+\begin{frame}
+	\frametitle{\insertframenumber{}. What is Mirantis OpenStack?}
+
+	\begin{description}
+		\item[OpenStack] is an open source cloud computing
+			platform.\\
+			\vspace{1.5ex}
+			\includegraphics[height=2.5cm]{openstack-components}
+		\item[Mirantis] ships hardened OpenStack packages and
+			provides Fuel utility to simplify deployment of
+			OpenStack.
+		\item[Fuel] uses Cobbler, MCollective, and Puppet to
+			discover nodes, provision OS, and setup
+			OpenStack services.
 	\end{description}
 \end{frame}
 
@@ -74,9 +91,9 @@
 	\frametitle{\insertframenumber{}. How does Ceph fit into
 	OpenStack?}
 	\begin{columns}
-		\column{.6\textwidth}
-		RBD drivers for OpenStack components configure QEMU
-		interface to librbd.
+		\column{.65\textwidth}
+		RBD drivers for OpenStack make libvirt configure the
+		QEMU interface to librbd.
 
 		\vspace{2ex}
 		Ceph benefits:
