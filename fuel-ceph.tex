@@ -1,16 +1,3 @@
-\documentclass[hyperref=unicode,utf8,xcolor=pst]{beamer}
-\usetheme{boxes}
-\setbeamertemplate{navigation symbols}{}
-%
-\definecolor{mirantisred}{RGB}{211,48,26}
-\setbeamercolor{titlelike}{fg=mirantisred}
-\setbeamercolor{structure}{fg=mirantisred}
-%
-\usepackage[T2A]{fontenc}
-%
-\usepackage{graphicx}
-\usepackage{fancyvrb}
-%
 % Copyright (c) 2014  Mirantis, Inc.
 %
 %    Licensed under the Apache License, Version 2.0 (the "License"); you may
@@ -25,9 +12,21 @@
 %    License for the specific language governing permissions and limitations
 %    under the License.
 %
-\title{Ceph in Mirantis OpenStack}
-%\author{\includegraphics[height=4cm, trim=3cm 2cm -5cm 4cm, clip]{Vector_RGB_MirantisLogo}\\Dmitry Borodaenko}
-\author{\includegraphics[height=5cm]{Vector_RGB_MirantisLogo}\\Dmitry Borodaenko}
+\documentclass[hyperref=unicode,utf8,xcolor=pst]{beamer}
+\usetheme{boxes}
+\setbeamertemplate{navigation symbols}{}
+%
+\definecolor{mirantisred}{RGB}{211,48,26}
+\setbeamercolor{titlelike}{fg=mirantisred}
+\setbeamercolor{structure}{fg=mirantisred}
+%
+\usepackage[T2A]{fontenc}
+%
+\usepackage{graphicx}
+\usepackage{fancyvrb}
+%
+\title{\fontsize{26}{0}\selectfont Ceph in Mirantis OpenStack}
+\author{\vspace{-2.5mm}\includegraphics[height=5cm]{Vector_RGB_MirantisLogo}\\Dmitry Borodaenko}
 \date{Mountain View, 2014}
 %
 \begin{document}
@@ -37,8 +36,7 @@
 \end{frame}
 
 \begin{frame}
-	\setcounter{framenumber}{1}
-	\frametitle{\insertframenumber{}. The Plan}
+	\frametitle{The Plan}
 	\begin{enumerate}
 		\item What is Ceph?
 		\item How does Ceph fit into OpenStack?
@@ -54,7 +52,8 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{\insertframenumber{}. What is Ceph?}
+	\setcounter{framenumber}{1}
+	\frametitle{What is Ceph?}
 	Ceph is a free storage system that provides unified object,
 	block, and file storage.
 
@@ -71,26 +70,25 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{\insertframenumber{}. What is Mirantis OpenStack?}
-
+	\frametitle{What is Mirantis OpenStack?}
 	\begin{description}
 		\item[OpenStack] is an open source cloud computing
 			platform.\\
 			\vspace{0.5ex}
-			\includegraphics[height=1.9cm]{openstack-components}
+			\includegraphics[height=2cm]{openstack-components}
 		\item[Mirantis] ships hardened OpenStack packages and
 			provides Fuel utility to simplify deployment of
 			OpenStack.
 		\item[Fuel] uses Cobbler, MCollective, and Puppet to
 			discover nodes, provision OS, and setup
 			OpenStack services.\\
-			\includegraphics[height=3.7cm]{fuel-components}
+			\vspace{0.5ex}
+			\includegraphics[height=3.8cm]{fuel-components}
 	\end{description}
 \end{frame}
 
 \begin{frame}
-	\frametitle{\insertframenumber{}. How does Ceph fit into
-	OpenStack?}
+	\frametitle{How does Ceph fit into OpenStack?}
 	\begin{columns}
 		\column{.65\textwidth}
 		RBD drivers for OpenStack make libvirt configure the
@@ -115,19 +113,51 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{\insertframenumber{}. What has Fuel ever done for Ceph?}
-
+	\frametitle{What has Fuel ever done for Ceph?}
 	\begin{enumerate}
-		\item Deploys Ceph Monitors and OSDs on dedicated nodes
-			or in combination with OpenStack components.\\
+		\item Fuel deploys Ceph Monitors and OSDs on dedicated
+			nodes or in combination with OpenStack
+			components.\\
 			\includegraphics[height=3.7cm]{openstack-nodes}
 		\item Creates partitions for OSDs when nodes are
 			provisioned.
 		\item Creates separate RADOS pools and sets up Cephx
 			authentication for Cinder, Glance, and Nova.
+		\item Configures Cinder, Glance, and Nova to use RBD
+			backend with the right pools and credentials.
 		\item Deploys RADOS Gateway (S3 and Swift API frontend
 			to Ceph) behind HAProxy on controller nodes.
 	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\frametitle{What does it look like?}
+	Select storage options $\Rightarrow$ assign roles to nodes $\Rightarrow$ allocate disks:\\
+	\vspace{3ex}
+	\makebox[\textwidth][c]{\includegraphics[width=1.18\textwidth]{fuel-ceph-screenshots}}
+\end{frame}
+
+\begin{frame}
+	\frametitle{What did we do?}
+	\begin{itemize}
+		\item ceph.conf
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{What we didn't do\dots}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Live VM migration with Ceph}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Diagnostics and troubleshooting}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Resources}
 \end{frame}
 
 \end{document}

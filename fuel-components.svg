@@ -37,6 +37,8 @@
 
 	<text x="251.1" y="60.8" id="text0" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >serialize </text>
 
+	<text x="80.1" y="140.8" id="text0" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >orchestrate </text>
+
 </g>
 <g id="group2">
 	<path id="path2" filter="url(#dsFilter)" fill="#fff" d="M 463.5 8 L 669.5 8 Q 679.5 8 679.5 18 L 679.5 222 Q 679.5 232 669.5 232 L 473.5 232 Q 463.5 232 463.5 222 Z" />
@@ -110,6 +112,6 @@
 </g>
 </g>
 <g id="text" fill="black" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >
-<text x="233.1" y="268.8" id="text12" fill="#000" >provision </text>
+<text x="233.1" y="268.8" id="text13" fill="#000" >provision </text>
 </g>
 </svg>
