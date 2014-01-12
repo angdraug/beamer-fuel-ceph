@@ -54,8 +54,8 @@
 \begin{frame}
 	\setcounter{framenumber}{1}
 	\frametitle{What is Ceph?}
-	Ceph is a free storage system that provides unified object,
-	block, and file storage.
+	Ceph is a free clustered storage system that provides unified
+	object, block, and file storage.
 
 	\begin{description}
 		\item[Object Storage] RADOS objects support
@@ -110,6 +110,11 @@
 		\column{.35\textwidth}
 		\includegraphics[height=6.5cm]{ceph-rbd-openstack}
 	\end{columns}
+
+	\vspace{2ex}
+	Ceph drawbacks: sensitive to clock drift, low block storage
+	density (erasure coding announced for Firefly), unproven
+	multi-site support (async replication first appeared in Emperor)
 \end{frame}
 
 \begin{frame}
@@ -138,26 +143,67 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{What did we do?}
+	\frametitle{Things we've done}
 	\begin{itemize}
-		\item ceph.conf
+		\item Set the right GPT type GUIDs on OSD and journal
+			partitions for udev automount rules to work
+		\item ceph-deploy: set up root SSH between Ceph nodes
+		\item Basic Ceph settings: cephx, pool size, networks
+		\item Cephx: ceph auth command line can't be split
+		\item Rados Gateway: has to be the Inktank's build of
+			FastCGI, UUID token format requires an infinite
+			revocation interval
+		\item Nova and Cinder: many little things to make live
+			migrations and CoW work out of the box
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
-	\frametitle{What we didn't do\dots}
+	\frametitle{Live VM migration with Ceph}
+	Native peer to peer migration between two libvirtd servers:\\
+	\includegraphics[height=3cm]{libvirt-p2p-migration}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Live VM migration with Ceph}
+	\frametitle{Things we didn't get around to}
+	\begin{itemize}
+		\item Non-root user with sudo for ceph-deploy
+		\item Calculate PG numbers based on the number of OSDs
+		\item Ceph public network should go to a second storage
+			network instead of management
+		\item Dedicated Monitor nodes, list all Monitors in
+			ceph.conf on each Ceph node
+		\item Multi-backend configuration for Cinder
+		\item A better way to configure pools for OpenStack
+			services (than CEPH\_ARGS in the init script)
+		\item Make Nova update VM's VNC listen address to
+			vncserver\_listen of the destination compute
+			after migration
+		\item Replace 'qemu-img convert' with clone\_image in
+			LibvirtDriver.snapshot() in Nova
+	\end{itemize}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Diagnostics and troubleshooting}
+	\begin{description}
+		\item['ceph-deploy config pull' failed] -- check if the
+			node can SSH to the primary controller
+		\item[HEALTH\_WARN: clock skew detected] -- check your
+			ntpd settings, make sure your NTP server is
+			reachable from all nodes
+	\end{description}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Resources}
+	http://ceph.com/docs/next/rbd/rbd-openstack/\\
+	https://bugs.launchpad.net/nova/+bug/1226351\\
+	https://github.com/jdurgin/nova/commits/havana-ephemeral-rbd\\
+	http://libvirt.org/migration.html\\
+	https://bugs.launchpad.net/nova/+bug/1262450\\
+	https://bugs.launchpad.net/nova/+bug/1262914\\
+	http://mirantis.hs-sites.com/how-to-stop-worrying-about-storage-openstack-ceph-webcast\\
 \end{frame}
 
 \end{document}

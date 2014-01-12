@@ -1,0 +1,104 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with ASCIIToSVG (http://9vx.org/~dho/a2s/) -->
+<svg width="486px" height="224px" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <filter id="dsFilterNoBlur" width="150%" height="150%">
+      <feOffset result="offOut" in="SourceGraphic" dx="3" dy="3"/>
+      <feColorMatrix result="matrixOut" in="offOut" type="matrix" values="0.2 0 0 0 0 0 0.2 0 0 0 0 0 0.2 0 0 0 0 0 1 0"/>
+      <feBlend in="SourceGraphic" in2="matrixOut" mode="normal"/>
+    </filter>
+    <filter id="dsFilter" width="150%" height="150%">
+      <feOffset result="offOut" in="SourceGraphic" dx="3" dy="3"/>
+      <feColorMatrix result="matrixOut" in="offOut" type="matrix" values="0.2 0 0 0 0 0 0.2 0 0 0 0 0 0.2 0 0 0 0 0 1 0"/>
+      <feGaussianBlur result="blurOut" in="matrixOut" stdDeviation="3"/>
+      <feBlend in="SourceGraphic" in2="blurOut" mode="normal"/>
+    </filter>
+    <marker id="iPointer"
+      viewBox="0 0 10 10" refX="5" refY="5" 
+      markerUnits="strokeWidth"
+      markerWidth="8" markerHeight="7"
+      orient="auto">
+      <path d="M 10 0 L 10 10 L 0 5 z" />
+    </marker>
+    <marker id="Pointer"
+      viewBox="0 0 10 10" refX="5" refY="5" 
+      markerUnits="strokeWidth"
+      markerWidth="8" markerHeight="7"
+      orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" />
+    </marker>
+  </defs><g id="boxes" stroke="black" stroke-width="2" fill="none" >
+<g id="group2">
+	<path id="path2" filter="url(#dsFilter)" fill="#fff" d="M 4.5 40 L 255.5 40 Q 265.5 40 265.5 50 L 265.5 190 Q 265.5 200 255.5 200 L 14.5 200 Q 4.5 200 4.5 190 Z" />
+	<text x="17.1" y="188.8" id="text2" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >Source compute node </text>
+
+</g>
+<g id="group5">
+	<path id="path5" filter="url(#dsFilter)" fill="#fff" d="M 301.5 40 L 471.5 40 Q 481.5 40 481.5 50 L 481.5 190 Q 481.5 200 471.5 200 L 311.5 200 Q 301.5 200 301.5 190 Z" />
+	<text x="314.1" y="188.8" id="text5" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >Dest compute node </text>
+
+</g>
+<g id="group8">
+	<path id="path8" filter="url(#dsFilter)" fill="#fff" d="M 22.5 72 L 75.5 72 Q 85.5 72 85.5 82 L 85.5 94 Q 85.5 104 75.5 104 L 32.5 104 Q 22.5 104 22.5 94 Z" />
+	<text x="35.1" y="92.8" id="text8" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >VM-A </text>
+
+</g>
+<g id="group10">
+	<path id="path10" filter="url(#dsFilter)" fill="#fff" d="M 103.5 72 L 156.5 72 Q 166.5 72 166.5 82 L 166.5 94 Q 166.5 104 156.5 104 L 113.5 104 Q 103.5 104 103.5 94 Z" />
+	<text x="116.1" y="92.8" id="text10" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >VM-B </text>
+
+</g>
+<g id="group12">
+	<path id="path12" filter="url(#dsFilter)" fill="#fff" d="M 184.5 72 L 237.5 72 Q 247.5 72 247.5 82 L 247.5 94 Q 247.5 104 237.5 104 L 194.5 104 Q 184.5 104 184.5 94 Z" />
+	<text x="197.1" y="92.8" id="text12" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >VM-C </text>
+
+</g>
+<g id="group15">
+	<path id="path15" filter="url(#dsFilter)" fill="#fff" d="M 319.5 72 L 372.5 72 Q 382.5 72 382.5 82 L 382.5 94 Q 382.5 104 372.5 104 L 329.5 104 Q 319.5 104 319.5 94 Z" />
+	<text x="332.1" y="92.8" id="text15" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >VM-C </text>
+
+</g>
+<g id="group17">
+	<path id="path17" filter="url(#dsFilter)" fill="#fff" d="M 400.5 72 L 453.5 72 Q 463.5 72 463.5 82 L 463.5 94 Q 463.5 104 453.5 104 L 410.5 104 Q 400.5 104 400.5 94 Z" />
+	<text x="413.1" y="92.8" id="text17" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >VM-D </text>
+
+</g>
+<g id="group29">
+	<path id="path29" filter="url(#dsFilter)" fill="#fff" d="M 22.5 136 L 75.5 136 Q 85.5 136 85.5 146 L 85.5 158 Q 85.5 168 75.5 168 L 32.5 168 Q 22.5 168 22.5 158 Z" />
+	<text x="35.1" y="156.8" id="text29" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >Nova </text>
+
+</g>
+<g id="group31">
+	<path id="path31" filter="url(#dsFilter)" fill="#fff" d="M 148.5 136 L 237.5 136 Q 247.5 136 247.5 146 L 247.5 158 Q 247.5 168 237.5 168 L 158.5 168 Q 148.5 168 148.5 158 Z" />
+	<text x="161.1" y="156.8" id="text31" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >libvirtd </text>
+
+</g>
+<g id="group34">
+	<path id="path34" filter="url(#dsFilter)" fill="#fff" d="M 328.5 136 L 417.5 136 Q 427.5 136 427.5 146 L 427.5 158 Q 427.5 168 417.5 168 L 338.5 168 Q 328.5 168 328.5 158 Z" />
+	<text x="341.1" y="156.8" id="text34" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >libvirtd </text>
+
+</g>
+</g>
+<g id="lines" stroke="black" stroke-width="2" fill="none" >
+<g id="group185">
+	<path id="path185" marker-end="url(#Pointer)" d="M 85.5 152 L 139.5 152 " />
+</g>
+<g id="group377">
+	<path id="path377" d="M 211.5 72 L 211.5 40 L 211.5 18 Q 211.5 8 221.5 8 L 336.5 8 Q 346.5 8 346.5 18 L 346.5 40 " />
+</g>
+<g id="group381">
+	<path id="path381" marker-start="url(#iPointer)" d="M 211.5 120 L 211.5 136 " />
+</g>
+<g id="group439">
+	<path id="path439" marker-end="url(#Pointer)" d="M 247.5 152 L 265.5 152 L 301.5 152 L 319.5 152 " />
+</g>
+<g id="group588">
+	<path id="path588" marker-start="url(#iPointer)" d="M 346.5 56 L 346.5 40 " />
+</g>
+</g>
+<g id="text" fill="black" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >
+</g>
+</svg>
