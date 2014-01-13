@@ -238,6 +238,32 @@ OSD_UUID     = '4fbd7e29-9d25-41b8-afd0-062c0ceff05d'
 \end{frame}
 
 \begin{frame}
+	\frametitle{Types of VM migrations}
+	\underline{OpenStack}
+	\begin{description}
+		\item [Live vs offline:] Is VM stopped during migration?
+		\item [Block vs shared storage vs volume-backed:] Is VM
+			data shared between nodes? Is VM metadata
+			(e.g. libvirt domain XML) shared?
+	\end{description}
+
+	\underline{Libvirt}
+	\begin{description}
+		\item [Native vs tunneled:] Is VM state transferred
+			directly between hypervisors or tunneled by
+			libvirtd?
+		\item [Direct vs peer-to-peer:] Is migration controlled
+			by libvirt client or by source libvirtd?
+		\item [Managed vs unmanaged:] Is migration controlled by
+			libvirt or by hypervisor itself?
+	\end{description}
+
+	\underline{Our type}\\
+	\vspace{1ex}
+	Live, volume-backed, native, peer-to-peer, managed.
+\end{frame}
+
+\begin{frame}
 	\frametitle{Live VM migrations with Ceph}
 	\begin{itemize}
 		\item Enable native peer to peer live migration:\\
