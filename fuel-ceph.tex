@@ -48,6 +48,7 @@
 		\item Things we've done
 		\item Disk partition for Ceph OSD
 		\item Cephx authentication settings
+		\item Types of VM migrations
 		\item Live VM migrations with Ceph
 		\item Thinks we left undone
 		\item Diagnostics and troubleshooting
@@ -235,7 +236,7 @@
 
 \begin{frame}
 	\frametitle{Types of VM migrations}
-	\underline{OpenStack}
+	{\bf OpenStack:}
 	\begin{description}
 		\item [Live vs offline:] Is VM stopped during migration?
 		\item [Block vs shared storage vs volume-backed:] Is VM
@@ -243,7 +244,7 @@
 			(e.g. libvirt domain XML) shared?
 	\end{description}
 
-	\underline{Libvirt}
+	{\bf Libvirt:}
 	\begin{description}
 		\item [Native vs tunneled:] Is VM state transferred
 			directly between hypervisors or tunneled by
@@ -254,9 +255,8 @@
 			libvirt or by hypervisor itself?
 	\end{description}
 
-	\underline{Our type}\\
-	\vspace{1ex}
-	Live, volume-backed, native, peer-to-peer, managed.
+	{\bf Our type:}\\
+	Live, volume-backed*, native, peer-to-peer, managed.
 \end{frame}
 
 \begin{frame}
