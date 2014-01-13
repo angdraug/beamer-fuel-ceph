@@ -115,9 +115,9 @@
 	\end{columns}
 
 	\vspace{2ex}
-	Ceph drawbacks: sensitive to clock drift, low block storage
-	density (erasure coding announced for Firefly), unproven
-	multi-site support (async replication first appeared in Emperor)
+	Problems: sensitivity to clock drift, multi-site (async
+	replication in Emperor), block storage density (erasure coding
+	in Firefly), Swift API gap (rbd backend for Swift)
 \end{frame}
 
 \begin{frame}
@@ -303,6 +303,7 @@
 	\begin{lstlisting}
 	ceph -s
 	ceph osd tree
+	cinder create 1
 	rados df
 	qemu-img convert -O raw cirros.qcow2 cirros.raw
 	glance image-create --name cirros-raw --is-public yes \
