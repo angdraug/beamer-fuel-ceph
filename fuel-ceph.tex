@@ -41,14 +41,16 @@
 	\frametitle{The Plan}
 	\begin{enumerate}
 		\item What is Ceph?
+		\item What is Mirantis OpenStack?
 		\item How does Ceph fit into OpenStack?
-		\item What can you make Ceph do with Fuel?
-		\item Gotchas and limitations
-		\item Ceph architecture overview
-		\item Storage architecture for OpenStack with Ceph
-		\item Deploying Ceph with Mirantis OpenStack
-		\item Operating Ceph backed OpenStack services
-		\item Troubleshooting
+		\item What has Fuel ever done for Ceph?
+		\item What does it look like?
+		\item Things we've done
+		\item Disk partition for Ceph OSD
+		\item Cephx authentication settings
+		\item Live VM migrations with Ceph
+		\item Thinks we left undone
+		\item Diagnostics and troubleshooting
 		\item Resources
 	\end{enumerate}
 \end{frame}
@@ -240,7 +242,9 @@ OSD_UUID     = '4fbd7e29-9d25-41b8-afd0-062c0ceff05d'
 	\begin{itemize}
 		\item Enable native peer to peer live migration:\\
 			\includegraphics[height=3cm]{libvirt-p2p-migration}\\
-			libvirt flags: live, p2p, undefine-source, persist
+			%libvirt flags: live, p2p, undefine-source, persist
+			libvirt VIR\_MIGRATE\_* flags: LIVE, PEER2PEER,
+			UNDEFINE\_SOURCE, PERSIST\_DEST
 		\item Patch Nova to decouple shared volumes from shared
 			libvirt metadata logic during live migration
 		\item Set VNC listen address to 0.0.0.0 and block VNC
@@ -276,12 +280,18 @@ OSD_UUID     = '4fbd7e29-9d25-41b8-afd0-062c0ceff05d'
 		\item[disk partitioning failed during provisioning] --
 			check if traces of previous partition tables are
 			left on any drives
+			\vspace{1ex}
+
 		\item['ceph-deploy config pull' failed] -- check if the
 			node can ssh to the primary controller over
 			management network
+			\vspace{1ex}
+
 		\item[HEALTH\_WARN: clock skew detected] -- check your
 			ntpd settings, make sure your NTP server is
 			reachable from all nodes
+			\vspace{1ex}
+
 		\item[ENOSPC when storing small objects in RGW] -- try
 			setting a smaller rgw object stripe size
 	\end{description}
@@ -291,22 +301,24 @@ OSD_UUID     = '4fbd7e29-9d25-41b8-afd0-062c0ceff05d'
 	\frametitle{Resources}
 	Read the docs:\\
 	\url{http://ceph.com/docs/next/rbd/rbd-openstack/}\\
+	\url{http://docs.mirantis.com/fuel/fuel-4.0/}\\
 	\url{http://libvirt.org/migration.html}\\
 	\url{http://docs.openstack.org/admin-guide-cloud/content/ch\_introduction-to-openstack-compute.html}
 
 	\vspace{2ex}
-	Vote on bugs:\\
+	Get the code:\\
+	\begin{itemize}
+		\item \href{http://software.mirantis.com/}{Mirantis OpenStack} ISO image and VirtualBox scripts,\\
+		\item \href{https://github.com/stackforge/fuel-library/tree/master/deployment/puppet/ceph}{ceph} Puppet module for Fuel,\\
+		\item Josh Durgin's \href{https://github.com/jdurgin/nova/commits/havana-ephemeral-rbd}{havana-ephemeral-rbd} branch for Nova.
+	\end{itemize}
+
+	\vspace{2ex}
+	Vote on Nova bugs:\\
 	\href{https://bugs.launchpad.net/fuel/+bug/1226351}{\#1226351},
 	\href{https://bugs.launchpad.net/fuel/+bug/1226351}{\#1261675},
 	\href{https://bugs.launchpad.net/fuel/+bug/1226351}{\#1262450},
 	\href{https://bugs.launchpad.net/fuel/+bug/1226351}{\#1262914}.
-
-	\vspace{2ex}
-	Until the fixes related to
-	\href{https://bugs.launchpad.net/fuel/+bug/1226351}{\#1226351}
-	are merged, pick them from Josh Durgin's
-	\href{https://github.com/jdurgin/nova/commits/havana-ephemeral-rbd}{havana-ephemeral-rbd}
-	branch on GitHub.
 
 	\vspace{2ex}
 	Sign up for
