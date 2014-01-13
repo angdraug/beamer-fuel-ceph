@@ -181,8 +181,8 @@
 		commentstyle=\color{gray}\ttfamily\footnotesize
 	}
 	\begin{lstlisting}
-JOURNAL_UUID = '45b0969e-9b03-4f30-b4c6-b4b80ceff106'
-OSD_UUID     = '4fbd7e29-9d25-41b8-afd0-062c0ceff05d'
+	JOURNAL_UUID = '45b0969e-9b03-4f30-b4c6-b4b80ceff106'
+	OSD_UUID     = '4fbd7e29-9d25-41b8-afd0-062c0ceff05d'
 	\end{lstlisting}
 
 	\vspace{1ex}
@@ -192,11 +192,7 @@ OSD_UUID     = '4fbd7e29-9d25-41b8-afd0-062c0ceff05d'
 
 \begin{frame}[fragile]
 	\frametitle{Cephx authentication settings}
-	\lstset{basicstyle=\ttfamily\footnotesize,
-		keywordstyle=\color{blue}\ttfamily\footnotesize,
-		stringstyle=\color{mirantisred}\ttfamily\footnotesize,
-		commentstyle=\color{gray}\ttfamily\footnotesize
-	}
+	\lstset{basicstyle=\ttfamily\footnotesize}
 
 	Monitor ACL is the same for {\color{mirantisred}all} Cephx users:
 	\vspace{-1ex}
@@ -222,8 +218,8 @@ OSD_UUID     = '4fbd7e29-9d25-41b8-afd0-062c0ceff05d'
 			allow rx pool=images
 			\end{lstlisting}
 
+		\vspace{-1.5ex}
 		\item[Nova:]
-			\vspace{-1.5ex}
 			\begin{lstlisting}
 			allow class-read object_prefix rbd_children,
 			allow rwx pool=volumes
@@ -300,24 +296,31 @@ OSD_UUID     = '4fbd7e29-9d25-41b8-afd0-062c0ceff05d'
 	\end{enumerate}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]
 	\frametitle{Diagnostics and troubleshooting}
+	\lstset{language=bash,basicstyle=\ttfamily\footnotesize}
+
+	\begin{lstlisting}
+	ceph -s
+	ceph osd tree
+	rados df
+	qemu-img convert -O raw cirros.qcow2 cirros.raw
+	glance image-create --name cirros-raw --is-public yes \
+	  --container-format bare --disk-format raw < cirros.raw
+	nova boot --flavor 1 --image cirros-raw vm0
+	nova live-migration vm0 node-3
+	\end{lstlisting}
+
 	\begin{description}
 		\item[disk partitioning failed during provisioning] --
 			check if traces of previous partition tables are
 			left on any drives
-			\vspace{1ex}
-
 		\item['ceph-deploy config pull' failed] -- check if the
 			node can ssh to the primary controller over
 			management network
-			\vspace{1ex}
-
 		\item[HEALTH\_WARN: clock skew detected] -- check your
 			ntpd settings, make sure your NTP server is
 			reachable from all nodes
-			\vspace{1ex}
-
 		\item[ENOSPC when storing small objects in RGW] -- try
 			setting a smaller rgw object stripe size
 	\end{description}
