@@ -19,11 +19,13 @@
 \definecolor{mirantisred}{RGB}{211,48,26}
 \setbeamercolor{titlelike}{fg=mirantisred}
 \setbeamercolor{structure}{fg=mirantisred}
+\hypersetup{colorlinks,urlcolor=mirantisred}
 %
 \usepackage[T2A]{fontenc}
 %
 \usepackage{graphicx}
 \usepackage{fancyvrb}
+\usepackage{listings}
 %
 \title{\fontsize{26}{0}\selectfont Ceph in Mirantis OpenStack}
 \author{\vspace{-2.5mm}\includegraphics[height=5cm]{Vector_RGB_MirantisLogo}\\Dmitry Borodaenko}
@@ -52,7 +54,6 @@
 \end{frame}
 
 \begin{frame}
-	\setcounter{framenumber}{1}
 	\frametitle{What is Ceph?}
 	Ceph is a free clustered storage system that provides unified
 	object, block, and file storage.
@@ -90,7 +91,7 @@
 \begin{frame}
 	\frametitle{How does Ceph fit into OpenStack?}
 	\begin{columns}
-		\column{.65\textwidth}
+		\column{.6\textwidth}
 		RBD drivers for OpenStack make libvirt configure the
 		QEMU interface to librbd.
 
@@ -107,7 +108,7 @@
 			\item Live migration of Ceph-backed instances
 		\end{itemize}
 
-		\column{.35\textwidth}
+		\column{.3\textwidth}
 		\includegraphics[height=6.5cm]{ceph-rbd-openstack}
 	\end{columns}
 
@@ -144,29 +145,114 @@
 
 \begin{frame}
 	\frametitle{Things we've done}
-	\begin{itemize}
+	\begin{enumerate}
 		\item Set the right GPT type GUIDs on OSD and journal
-			partitions for udev automount rules to work
+			partitions for udev automount rules
 		\item ceph-deploy: set up root SSH between Ceph nodes
 		\item Basic Ceph settings: cephx, pool size, networks
 		\item Cephx: ceph auth command line can't be split
-		\item Rados Gateway: has to be the Inktank's build of
-			FastCGI, UUID token format requires an infinite
-			revocation interval
-		\item Nova and Cinder: many little things to make live
-			migrations and CoW work out of the box
+		\item Rados Gateway: has to be the Inktank's fork of
+			FastCGI, set an infinite revocation interval for
+			UUID auth tokens to work
+		\item Patch Cinder to convert non-raw images when
+			creating an RBD backed volume from Glance
+		\item Patch Nova: clone RBD backed Glance images into
+			RBD backed ephemeral volumes, pass RBD user to
+			qemu-img
+		\item Ephemeral RBD: disable SSH key injection, set up
+			Nova, libvirt, and QEMU for live migrations
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Disk partitioning for Ceph OSD}
+	Flow of disk partitioning information during discovery,
+	configuration, provisioning, and deployment:\\
+	\vspace{1ex}
+	\includegraphics[height=3.7cm]{osd-disks}
+
+	GPT partition type GUIDs according to ceph-disk:
+	\lstset{language=Python,
+		basicstyle=\ttfamily\footnotesize,
+		keywordstyle=\color{blue}\ttfamily\footnotesize,
+		stringstyle=\color{mirantisred}\ttfamily\footnotesize,
+		commentstyle=\color{gray}\ttfamily\footnotesize
+	}
+	\begin{lstlisting}
+JOURNAL_UUID = '45b0969e-9b03-4f30-b4c6-b4b80ceff106'
+OSD_UUID     = '4fbd7e29-9d25-41b8-afd0-062c0ceff05d'
+	\end{lstlisting}
+
+	\vspace{1ex}
+	If more than one device is allocated for OSD Journal, journal
+	devices are evenly distributed between OSDs.
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Cephx authentication settings}
+	\lstset{basicstyle=\ttfamily\footnotesize,
+		keywordstyle=\color{blue}\ttfamily\footnotesize,
+		stringstyle=\color{mirantisred}\ttfamily\footnotesize,
+		commentstyle=\color{gray}\ttfamily\footnotesize
+	}
+
+	Monitor ACL is the same for {\color{mirantisred}all} Cephx users:
+	\vspace{-1ex}
+	\begin{lstlisting}
+	allow r
+	\end{lstlisting}
+	\vspace{1ex}
+
+	OSD ACLs vary per OpenStack component:
+	\vspace{-1ex}
+	\begin{description}
+		\item[Glance:]
+			\begin{lstlisting}
+			allow class-read object_prefix rbd_children,
+			allow rwx pool=images
+			\end{lstlisting}
+
+		\vspace{-1.5ex}
+		\item[Cinder:]
+			\begin{lstlisting}
+			allow class-read object_prefix rbd_children,
+			allow rwx pool=volumes
+			allow rx pool=images
+			\end{lstlisting}
+
+		\item[Nova:]
+			\vspace{-1.5ex}
+			\begin{lstlisting}
+			allow class-read object_prefix rbd_children,
+			allow rwx pool=volumes
+			allow rx pool=images
+			allow rwx pool=compute
+			\end{lstlisting}
+	\end{description}
+
+	{\color{mirantisred}Watch out:} Cephx is easily tripped up by
+	unexpected whitespace in ceph auth command line parameters, so
+	we have to keep them all on a single line.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Live VM migrations with Ceph}
+	\begin{itemize}
+		\item Enable native peer to peer live migration:\\
+			\includegraphics[height=3cm]{libvirt-p2p-migration}\\
+			libvirt flags: live, p2p, undefine-source, persist
+		\item Patch Nova to decouple shared volumes from shared
+			libvirt metadata logic during live migration
+		\item Set VNC listen address to 0.0.0.0 and block VNC
+			from outside the management network in iptables
+		\item Open ports 49152+ between computes for QEMU
+			migrations
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Live VM migration with Ceph}
-	Native peer to peer migration between two libvirtd servers:\\
-	\includegraphics[height=3cm]{libvirt-p2p-migration}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Things we didn't get around to}
-	\begin{itemize}
+	\frametitle{Things we left undone}
+	\begin{enumerate}
 		\item Non-root user with sudo for ceph-deploy
 		\item Calculate PG numbers based on the number of OSDs
 		\item Ceph public network should go to a second storage
@@ -179,31 +265,53 @@
 		\item Make Nova update VM's VNC listen address to
 			vncserver\_listen of the destination compute
 			after migration
-		\item Replace 'qemu-img convert' with clone\_image in
+		\item Replace 'qemu-img convert' with clone\_image() in
 			LibvirtDriver.snapshot() in Nova
-	\end{itemize}
+	\end{enumerate}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Diagnostics and troubleshooting}
 	\begin{description}
+		\item[disk partitioning failed during provisioning] --
+			check if traces of previous partition tables are
+			left on any drives
 		\item['ceph-deploy config pull' failed] -- check if the
-			node can SSH to the primary controller
+			node can ssh to the primary controller over
+			management network
 		\item[HEALTH\_WARN: clock skew detected] -- check your
 			ntpd settings, make sure your NTP server is
 			reachable from all nodes
+		\item[ENOSPC when storing small objects in RGW] -- try
+			setting a smaller rgw object stripe size
 	\end{description}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Resources}
-	http://ceph.com/docs/next/rbd/rbd-openstack/\\
-	https://bugs.launchpad.net/nova/+bug/1226351\\
-	https://github.com/jdurgin/nova/commits/havana-ephemeral-rbd\\
-	http://libvirt.org/migration.html\\
-	https://bugs.launchpad.net/nova/+bug/1262450\\
-	https://bugs.launchpad.net/nova/+bug/1262914\\
-	http://mirantis.hs-sites.com/how-to-stop-worrying-about-storage-openstack-ceph-webcast\\
+	Read the docs:\\
+	\url{http://ceph.com/docs/next/rbd/rbd-openstack/}\\
+	\url{http://libvirt.org/migration.html}\\
+	\url{http://docs.openstack.org/admin-guide-cloud/content/ch\_introduction-to-openstack-compute.html}
+
+	\vspace{2ex}
+	Vote on bugs:\\
+	\href{https://bugs.launchpad.net/fuel/+bug/1226351}{\#1226351},
+	\href{https://bugs.launchpad.net/fuel/+bug/1226351}{\#1261675},
+	\href{https://bugs.launchpad.net/fuel/+bug/1226351}{\#1262450},
+	\href{https://bugs.launchpad.net/fuel/+bug/1226351}{\#1262914}.
+
+	\vspace{2ex}
+	Until the fixes related to
+	\href{https://bugs.launchpad.net/fuel/+bug/1226351}{\#1226351}
+	are merged, pick them from Josh Durgin's
+	\href{https://github.com/jdurgin/nova/commits/havana-ephemeral-rbd}{havana-ephemeral-rbd}
+	branch on GitHub.
+
+	\vspace{2ex}
+	Sign up for
+	\href{http://mirantis.hs-sites.com/how-to-stop-worrying-about-storage-openstack-ceph-webcast}{Mirantis
+	and Inktank webcast on Ceph and OpenStack}.
 \end{frame}
 
 \end{document}

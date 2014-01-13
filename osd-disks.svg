@@ -1,0 +1,189 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with ASCIIToSVG (http://9vx.org/~dho/a2s/) -->
+<svg width="954px" height="320px" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <filter id="dsFilterNoBlur" width="150%" height="150%">
+      <feOffset result="offOut" in="SourceGraphic" dx="3" dy="3"/>
+      <feColorMatrix result="matrixOut" in="offOut" type="matrix" values="0.2 0 0 0 0 0 0.2 0 0 0 0 0 0.2 0 0 0 0 0 1 0"/>
+      <feBlend in="SourceGraphic" in2="matrixOut" mode="normal"/>
+    </filter>
+    <filter id="dsFilter" width="150%" height="150%">
+      <feOffset result="offOut" in="SourceGraphic" dx="3" dy="3"/>
+      <feColorMatrix result="matrixOut" in="offOut" type="matrix" values="0.2 0 0 0 0 0 0.2 0 0 0 0 0 0.2 0 0 0 0 0 1 0"/>
+      <feGaussianBlur result="blurOut" in="matrixOut" stdDeviation="3"/>
+      <feBlend in="SourceGraphic" in2="blurOut" mode="normal"/>
+    </filter>
+    <marker id="iPointer"
+      viewBox="0 0 10 10" refX="5" refY="5" 
+      markerUnits="strokeWidth"
+      markerWidth="8" markerHeight="7"
+      orient="auto">
+      <path d="M 10 0 L 10 10 L 0 5 z" />
+    </marker>
+    <marker id="Pointer"
+      viewBox="0 0 10 10" refX="5" refY="5" 
+      markerUnits="strokeWidth"
+      markerWidth="8" markerHeight="7"
+      orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" />
+    </marker>
+  </defs><g id="boxes" stroke="black" stroke-width="2" fill="none" >
+<g id="group0">
+	<path id="path0" filter="url(#dsFilter)" fill="#fff" d="M 4.5 8 L 390.5 8 Q 400.5 8 400.5 18 L 400.5 222 Q 400.5 232 390.5 232 L 14.5 232 Q 4.5 232 4.5 222 Z" />
+	<text x="17.1" y="28.8" id="text0" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >Fuel master node </text>
+
+	<text x="125.1" y="60.8" id="text0" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >allocation </text>
+
+	<text x="152.1" y="108.8" id="text0" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >ceph-osd </text>
+
+	<text x="134.1" y="124.8" id="text0" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >role volumes </text>
+
+	<text x="305.1" y="124.8" id="text0" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >ks_spaces </text>
+
+</g>
+<g id="group2">
+	<path id="path2" filter="url(#dsFilter)" fill="#fff" d="M 418.5 8 L 939.5 8 Q 949.5 8 949.5 18 L 949.5 286 Q 949.5 296 939.5 296 L 428.5 296 Q 418.5 296 418.5 286 Z" />
+	<text x="431.1" y="28.8" id="text2" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >Target node </text>
+
+	<text x="710.1" y="44.8" id="text2" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >scan </text>
+
+	<text x="431.1" y="60.8" id="text2" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >disks </text>
+
+	<text x="611.1" y="60.8" id="text2" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >scan </text>
+
+	<text x="818.1" y="108.8" id="text2" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >osd:journal </text>
+
+	<text x="584.1" y="124.8" id="text2" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >create </text>
+
+	<text x="593.1" y="204.8" id="text2" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >set </text>
+
+	<text x="593.1" y="220.8" id="text2" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >type </text>
+
+</g>
+<g id="group4">
+	<path id="path4" filter="url(#dsFilter)" fill="#fff" d="M 760.5 40 L 921.5 40 Q 931.5 40 931.5 50 L 931.5 78 Q 931.5 88 921.5 88 L 770.5 88 Q 760.5 88 760.5 78 Z" />
+	<text x="773.1" y="60.8" id="text4" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >Facter </text>
+
+	<text x="773.1" y="76.8" id="text4" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >osd_devices_list </text>
+
+</g>
+<g id="group6">
+	<path id="path6" filter="url(#dsFilter)" fill="#fff" d="M 22.5 56 L 102.5 56 Q 112.5 56 112.5 66 L 112.5 78 Q 112.5 88 102.5 88 L 32.5 88 Q 22.5 88 22.5 78 Z" />
+	<text x="35.1" y="76.8" id="text6" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >Fuel UI </text>
+
+</g>
+<g id="group8">
+	<path id="path8" filter="url(#dsFilter)" fill="#fff" d="M 238.5 56 L 318.5 56 Q 328.5 56 328.5 66 L 328.5 78 Q 328.5 88 318.5 88 L 248.5 88 Q 238.5 88 238.5 78 Z" />
+	<text x="251.1" y="76.8" id="text8" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >Nailgun </text>
+
+</g>
+<g id="group10">
+	<path id="path10" filter="url(#dsFilter)" fill="#fff" d="M 499.5 56 L 579.5 56 Q 589.5 56 589.5 66 L 589.5 78 Q 589.5 88 579.5 88 L 509.5 88 Q 499.5 88 499.5 78 Z" />
+	<text x="512.1" y="76.8" id="text10" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >MCAgent </text>
+
+</g>
+<g id="group30">
+	<path id="path30" filter="url(#dsFilter)" fill="#fff" d="M 490.5 120 L 561.5 120 Q 571.5 120 571.5 130 L 571.5 142 Q 571.5 152 561.5 152 L 500.5 152 Q 490.5 152 490.5 142 Z" />
+	<text x="503.1" y="140.8" id="text30" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >parted </text>
+
+</g>
+<g id="group32">
+	<path id="path32" filter="url(#dsFilter)" fill="#fff" d="M 661.5 120 L 741.5 120 Q 751.5 120 751.5 130 L 751.5 238 Q 751.5 248 741.5 248 L 671.5 248 Q 661.5 248 661.5 238 Z" />
+	<text x="674.1" y="140.8" id="text32" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >Base OS </text>
+
+	<text x="674.1" y="172.8" id="text32" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >OSD </text>
+
+	<text x="674.1" y="204.8" id="text32" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >OSD </text>
+
+	<text x="674.1" y="236.8" id="text32" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >Journal </text>
+
+</g>
+<g id="group38">
+	<path id="path38" filter="url(#dsFilter)" fill="#fff" d="M 787.5 136 L 885.5 136 Q 895.5 136 895.5 146 L 895.5 174 Q 895.5 184 885.5 184 L 797.5 184 Q 787.5 184 787.5 174 Z" />
+	<text x="800.1" y="156.8" id="text38" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >Puppet </text>
+
+	<text x="800.1" y="172.8" id="text38" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >ceph::osd </text>
+
+</g>
+<g id="group44">
+	<path id="path44" filter="url(#dsFilter)" fill="#fff" d="M 22.5 168 L 165.5 168 Q 175.5 168 175.5 178 L 175.5 190 Q 175.5 200 165.5 200 L 32.5 200 Q 22.5 200 22.5 190 Z" />
+	<text x="35.1" y="188.8" id="text44" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >openstack.json </text>
+
+</g>
+<g id="group47">
+	<path id="path47" filter="url(#dsFilter)" fill="#fff" d="M 238.5 168 L 318.5 168 Q 328.5 168 328.5 178 L 328.5 190 Q 328.5 200 318.5 200 L 248.5 200 Q 238.5 200 238.5 190 Z" />
+	<text x="251.1" y="188.8" id="text47" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >Cobbler </text>
+
+</g>
+<g id="group49">
+	<path id="path49" filter="url(#dsFilter)" fill="#fff" d="M 445.5 168 L 534.5 168 Q 544.5 168 544.5 178 L 544.5 190 Q 544.5 200 534.5 200 L 455.5 200 Q 445.5 200 445.5 190 Z" />
+	<text x="458.1" y="188.8" id="text49" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >pmanager </text>
+
+</g>
+<g id="group68">
+	<path id="path68" filter="url(#dsFilter)" fill="#fff" d="M 490.5 216 L 561.5 216 Q 571.5 216 571.5 226 L 571.5 238 Q 571.5 248 561.5 248 L 500.5 248 Q 490.5 248 490.5 238 Z" />
+	<text x="503.1" y="236.8" id="text68" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >sgdisk </text>
+
+</g>
+<g id="group76">
+	<path id="path76" filter="url(#dsFilter)" fill="#fff" d="M 787.5 232 L 903.5 232 Q 913.5 232 913.5 242 L 913.5 254 Q 913.5 264 903.5 264 L 797.5 264 Q 787.5 264 787.5 254 Z" />
+	<text x="800.1" y="252.8" id="text76" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >ceph-deploy </text>
+
+</g>
+</g>
+<g id="lines" stroke="black" stroke-width="2" fill="none" >
+<g id="group330">
+	<path id="path330" marker-end="url(#Pointer)" d="M 112.5 72 L 229.5 72 " />
+</g>
+<g id="group377">
+	<path id="path377" marker-end="url(#Pointer)" d="M 130.5 168 L 130.5 146 Q 130.5 136 140.5 136 L 246.5 136 Q 256.5 136 256.5 126 L 256.5 104 " />
+</g>
+<g id="group753">
+	<path id="path753" marker-end="url(#Pointer)" d="M 301.5 88 L 301.5 152 " />
+</g>
+<g id="group820">
+	<path id="path820" marker-end="url(#Pointer)" d="M 328.5 184 L 400.5 184 L 418.5 184 L 436.5 184 " />
+</g>
+<g id="group834">
+	<path id="path834" marker-start="url(#iPointer)" d="M 337.5 72 L 400.5 72 L 418.5 72 L 499.5 72 L 499.5 56 " />
+</g>
+<g id="group1120">
+	<path id="path1120" marker-end="url(#Pointer)" d="M 463.5 168 L 463.5 146 Q 463.5 136 473.5 136 L 481.5 136 " />
+</g>
+<g id="group1123">
+	<path id="path1123" marker-end="url(#Pointer)" d="M 463.5 200 L 463.5 222 Q 463.5 232 473.5 232 L 481.5 232 " />
+</g>
+<g id="group1360">
+	<path id="path1360" marker-end="url(#Pointer)" d="M 571.5 136 L 652.5 136 " />
+</g>
+<g id="group1367">
+	<path id="path1367" marker-end="url(#Pointer)" d="M 571.5 232 L 652.5 232 " />
+</g>
+<g id="group1398">
+	<path id="path1398" marker-end="url(#Pointer)" d="M 589.5 72 L 669.5 72 Q 679.5 72 679.5 82 L 679.5 104 " />
+</g>
+<g id="group1564">
+	<path id="path1564" d="M 661.5 152 L 751.5 152 " />
+</g>
+<g id="group1567">
+	<path id="path1567" d="M 661.5 184 L 751.5 184 " />
+</g>
+<g id="group1570">
+	<path id="path1570" d="M 661.5 216 L 751.5 216 " />
+</g>
+<g id="group1664">
+	<path id="path1664" marker-start="url(#iPointer)" d="M 706.5 104 L 706.5 66 Q 706.5 56 716.5 56 L 760.5 56 L 760.5 40 " />
+</g>
+<g id="group1903">
+	<path id="path1903" marker-end="url(#Pointer)" d="M 814.5 88 L 814.5 120 " />
+</g>
+<g id="group1910">
+	<path id="path1910" marker-end="url(#Pointer)" d="M 814.5 184 L 814.5 216 " />
+</g>
+</g>
+<g id="text" fill="black" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >
+</g>
+</svg>
