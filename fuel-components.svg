@@ -2,7 +2,7 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
   "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Created with ASCIIToSVG (http://9vx.org/~dho/a2s/) -->
-<svg width="684px" height="304px" version="1.1"
+<svg width="675px" height="304px" version="1.1"
   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs>
     <filter id="dsFilterNoBlur" width="150%" height="150%">
@@ -32,21 +32,23 @@
     </marker>
   </defs><g id="boxes" stroke="black" stroke-width="2" fill="none" >
 <g id="group0">
-	<path id="path0" filter="url(#dsFilter)" fill="#fff" d="M 4.5 8 L 435.5 8 Q 445.5 8 445.5 18 L 445.5 222 Q 445.5 232 435.5 232 L 14.5 232 Q 4.5 232 4.5 222 Z" />
+	<path id="path0" filter="url(#dsFilter)" fill="#fff" d="M 4.5 8 L 426.5 8 Q 436.5 8 436.5 18 L 436.5 222 Q 436.5 232 426.5 232 L 14.5 232 Q 4.5 232 4.5 222 Z" />
 	<text x="17.1" y="28.8" id="text0" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >Fuel master node </text>
 
-	<text x="251.1" y="60.8" id="text0" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >serialize </text>
+	<text x="242.1" y="60.8" id="text0" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >serialize </text>
 
 	<text x="80.1" y="140.8" id="text0" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >orchestrate </text>
 
+	<text x="323.1" y="172.8" id="text0" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >control </text>
+
 </g>
 <g id="group2">
-	<path id="path2" filter="url(#dsFilter)" fill="#fff" d="M 463.5 8 L 669.5 8 Q 679.5 8 679.5 18 L 679.5 222 Q 679.5 232 669.5 232 L 473.5 232 Q 463.5 232 463.5 222 Z" />
-	<text x="476.1" y="28.8" id="text2" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >Target node </text>
+	<path id="path2" filter="url(#dsFilter)" fill="#fff" d="M 454.5 8 L 660.5 8 Q 670.5 8 670.5 18 L 670.5 222 Q 670.5 232 660.5 232 L 464.5 232 Q 454.5 232 454.5 222 Z" />
+	<text x="467.1" y="28.8" id="text2" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >Target node </text>
 
-	<text x="476.1" y="60.8" id="text2" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >configure </text>
+	<text x="467.1" y="60.8" id="text2" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >configure </text>
 
-	<text x="566.1" y="156.8" id="text2" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >start </text>
+	<text x="575.1" y="140.8" id="text2" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >run </text>
 
 </g>
 <g id="group4">
@@ -55,18 +57,18 @@
 
 </g>
 <g id="group6">
-	<path id="path6" filter="url(#dsFilter)" fill="#fff" d="M 148.5 56 L 228.5 56 Q 238.5 56 238.5 66 L 238.5 78 Q 238.5 88 228.5 88 L 158.5 88 Q 148.5 88 148.5 78 Z" />
-	<text x="161.1" y="76.8" id="text6" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >Nailgun </text>
+	<path id="path6" filter="url(#dsFilter)" fill="#fff" d="M 139.5 56 L 219.5 56 Q 229.5 56 229.5 66 L 229.5 78 Q 229.5 88 219.5 88 L 149.5 88 Q 139.5 88 139.5 78 Z" />
+	<text x="152.1" y="76.8" id="text6" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >Nailgun </text>
 
 </g>
 <g id="group8">
-	<path id="path8" filter="url(#dsFilter)" fill="#fff" d="M 355.5 56 L 417.5 56 Q 427.5 56 427.5 66 L 427.5 78 Q 427.5 88 417.5 88 L 365.5 88 Q 355.5 88 355.5 78 Z" />
-	<text x="368.1" y="76.8" id="text8" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >facts </text>
+	<path id="path8" filter="url(#dsFilter)" fill="#fff" d="M 346.5 56 L 408.5 56 Q 418.5 56 418.5 66 L 418.5 78 Q 418.5 88 408.5 88 L 356.5 88 Q 346.5 88 346.5 78 Z" />
+	<text x="359.1" y="76.8" id="text8" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >facts </text>
 
 </g>
 <g id="group10">
-	<path id="path10" filter="url(#dsFilter)" fill="#fff" d="M 580.5 56 L 651.5 56 Q 661.5 56 661.5 66 L 661.5 78 Q 661.5 88 651.5 88 L 590.5 88 Q 580.5 88 580.5 78 Z" />
-	<text x="593.1" y="76.8" id="text10" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >Puppet </text>
+	<path id="path10" filter="url(#dsFilter)" fill="#fff" d="M 571.5 56 L 642.5 56 Q 652.5 56 652.5 66 L 652.5 78 Q 652.5 88 642.5 88 L 581.5 88 Q 571.5 88 571.5 78 Z" />
+	<text x="584.1" y="76.8" id="text10" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >Puppet </text>
 
 </g>
 <g id="group29">
@@ -80,8 +82,8 @@
 
 </g>
 <g id="group33">
-	<path id="path33" filter="url(#dsFilter)" fill="#fff" d="M 481.5 168 L 651.5 168 Q 661.5 168 661.5 178 L 661.5 190 Q 661.5 200 651.5 200 L 491.5 200 Q 481.5 200 481.5 190 Z" />
-	<text x="494.1" y="188.8" id="text33" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >MCollective Agent </text>
+	<path id="path33" filter="url(#dsFilter)" fill="#fff" d="M 472.5 168 L 642.5 168 Q 652.5 168 652.5 178 L 652.5 190 Q 652.5 200 642.5 200 L 482.5 200 Q 472.5 200 472.5 190 Z" />
+	<text x="485.1" y="188.8" id="text33" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >MCollective Agent </text>
 
 </g>
 </g>
@@ -93,25 +95,25 @@
 	<path id="path162" marker-end="url(#Pointer)" d="M 49.5 200 L 49.5 232 L 49.5 270 Q 49.5 280 59.5 280 L 552.5 280 Q 562.5 280 562.5 270 L 562.5 248 " />
 </g>
 <g id="group213">
-	<path id="path213" marker-end="url(#Pointer)" d="M 76.5 88 L 76.5 110 Q 76.5 120 86.5 120 L 201.5 120 Q 211.5 120 211.5 130 L 211.5 152 " />
+	<path id="path213" marker-end="url(#Pointer)" d="M 76.5 88 L 76.5 110 Q 76.5 120 86.5 120 L 192.5 120 Q 202.5 120 202.5 130 L 202.5 152 " />
 </g>
 <g id="group289">
-	<path id="path289" marker-start="url(#iPointer)" d="M 112.5 72 L 148.5 72 L 148.5 56 " />
+	<path id="path289" marker-start="url(#iPointer)" d="M 112.5 72 L 139.5 72 L 139.5 56 " />
 </g>
-<g id="group555">
-	<path id="path555" marker-end="url(#Pointer)" d="M 238.5 72 L 346.5 72 " />
+<g id="group536">
+	<path id="path536" marker-end="url(#Pointer)" d="M 229.5 72 L 337.5 72 " />
 </g>
 <g id="group639">
-	<path id="path639" d="M 274.5 184 L 445.5 184 L 463.5 184 L 481.5 184 L 481.5 168 " />
+	<path id="path639" d="M 274.5 184 L 436.5 184 L 454.5 184 L 472.5 184 L 472.5 168 " />
 </g>
-<g id="group956">
-	<path id="path956" marker-end="url(#Pointer)" d="M 427.5 72 L 445.5 72 L 463.5 72 L 571.5 72 " />
+<g id="group937">
+	<path id="path937" marker-end="url(#Pointer)" d="M 418.5 72 L 436.5 72 L 454.5 72 L 562.5 72 " />
 </g>
-<g id="group1377">
-	<path id="path1377" marker-start="url(#iPointer)" d="M 625.5 104 L 625.5 168 " />
+<g id="group1358">
+	<path id="path1358" marker-start="url(#iPointer)" d="M 616.5 104 L 616.5 168 " />
 </g>
 </g>
 <g id="text" fill="black" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >
-<text x="233.1" y="268.8" id="text13" fill="#000" >provision </text>
+<text x="233.1" y="268.8" id="text14" fill="#000" >provision </text>
 </g>
 </svg>

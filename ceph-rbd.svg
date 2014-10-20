@@ -2,7 +2,7 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
   "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Created with ASCIIToSVG (http://9vx.org/~dho/a2s/) -->
-<svg width="261px" height="160px" version="1.1"
+<svg width="198px" height="160px" version="1.1"
   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs>
     <filter id="dsFilterNoBlur" width="150%" height="150%">
@@ -32,28 +32,28 @@
     </marker>
   </defs><g id="boxes" stroke="black" stroke-width="2" fill="none" >
 <g id="group0">
-	<path id="path0" filter="url(#dsFilter)" fill="#fff" d="M 4.5 8 L 148.5 8 L 148.5 40 L 4.5 40 Z" />
-	<text x="17.1" y="28.8" id="text0" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >Kernel Module </text>
+	<path id="path0" filter="url(#dsFilter)" fill="#fff" d="M 4.5 8 L 85.5 8 L 85.5 40 L 4.5 40 Z" />
+	<text x="17.1" y="28.8" id="text0" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >rbd.ko </text>
 
 </g>
 <g id="group2">
-	<path id="path2" filter="url(#dsFilter)" fill="#fff" d="M 175.5 8 L 256.5 8 L 256.5 40 L 175.5 40 Z" />
-	<text x="188.1" y="28.8" id="text2" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >librbd </text>
+	<path id="path2" filter="url(#dsFilter)" fill="#fff" d="M 112.5 8 L 193.5 8 L 193.5 40 L 112.5 40 Z" />
+	<text x="125.1" y="28.8" id="text2" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >librbd </text>
 
 </g>
-<g id="group8">
-	<path id="path8" filter="url(#dsFilter)" fill="#fff" d="M 4.5 56 L 256.5 56 L 256.5 88 L 4.5 88 Z" />
-	<text x="17.1" y="76.8" id="text8" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >RADOS Protocol </text>
+<g id="group9">
+	<path id="path9" filter="url(#dsFilter)" fill="#fff" d="M 4.5 56 L 193.5 56 L 193.5 88 L 4.5 88 Z" />
+	<text x="17.1" y="76.8" id="text9" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >RADOS Protocol </text>
 
 </g>
-<g id="group12">
-	<path id="path12" filter="url(#dsFilter)" fill="#fff" d="M 4.5 104 L 67.5 104 L 67.5 136 L 4.5 136 Z" />
-	<text x="17.1" y="124.8" id="text12" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >OSDs </text>
+<g id="group13">
+	<path id="path13" filter="url(#dsFilter)" fill="#fff" d="M 4.5 104 L 67.5 104 L 67.5 136 L 4.5 136 Z" />
+	<text x="17.1" y="124.8" id="text13" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >OSDs </text>
 
 </g>
-<g id="group14">
-	<path id="path14" filter="url(#dsFilter)" fill="#fff" d="M 157.5 104 L 256.5 104 L 256.5 136 L 157.5 136 Z" />
-	<text x="170.1" y="124.8" id="text14" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >Monitors </text>
+<g id="group15">
+	<path id="path15" filter="url(#dsFilter)" fill="#fff" d="M 94.5 104 L 193.5 104 L 193.5 136 L 94.5 136 Z" />
+	<text x="107.1" y="124.8" id="text15" fill="#000" stroke="none" style="font-family:Consolas,Monaco,Anonymous Pro,Anonymous,Bitstream Sans Mono,monospace;font-size:15.2px" >Monitors </text>
 
 </g>
 </g>

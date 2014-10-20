@@ -12,7 +12,7 @@
 %    License for the specific language governing permissions and limitations
 %    under the License.
 %
-\documentclass[hyperref=unicode,utf8,xcolor=pst]{beamer}
+\documentclass[hyperref=unicode,utf8,xcolor=pst,aspectratio=169]{beamer}
 \usetheme{boxes}
 \setbeamertemplate{navigation symbols}{}
 %
@@ -27,8 +27,12 @@
 \usepackage{fancyvrb}
 \usepackage{listings}
 %
+\newcounter{savedenum}
+\newcommand*{\saveenum}{\setcounter{savedenum}{\theenumi}}
+\newcommand*{\resume}{\setcounter{enumi}{\thesavedenum}}
+%
 \title{\fontsize{26}{0}\selectfont Ceph in Mirantis OpenStack}
-\author{\vspace{-2.5mm}\includegraphics[height=5cm]{Vector_RGB_MirantisLogo}\\Dmitry Borodaenko}
+\author{\vspace{-1mm}\includegraphics[height=5cm]{Vector_RGB_MirantisLogo}\\Dmitry Borodaenko\vspace{-10mm}}
 \date{Mountain View, 2014}
 %
 \begin{document}
@@ -39,138 +43,225 @@
 
 \begin{frame}
 	\frametitle{The Plan}
-	\begin{enumerate}
-		\item What is Ceph?
-		\item What is Mirantis OpenStack?
-		\item How does Ceph fit into OpenStack?
-		\item What has Fuel ever done for Ceph?
-		\item What does it look like?
-		\item Things we've done
-		\item Disk partition for Ceph OSD
-		\item Cephx authentication settings
-		\item Types of VM migrations
-		\item Live VM migrations with Ceph
-		\item Thinks we left undone
-		\item Diagnostics and troubleshooting
-		\item Resources
-	\end{enumerate}
+	\begin{columns}[T]
+		\column{.55\textwidth}
+		\begin{enumerate}
+			\item What is Ceph?
+			\item What is Mirantis OpenStack?
+			\item How does Ceph fit with OpenStack?
+			\item Where does Ceph not fit with OpenStack?
+			\item What has Fuel got to do with Ceph?
+			\item What does it look like?
+			\item Things we do for Ceph in Fuel
+			\item Things we do for Ceph in OpenStack
+			\saveenum
+		\end{enumerate}
+
+		\column{.45\textwidth}
+		\begin{enumerate}
+			\resume
+			\item Disk partitioning for Ceph OSD
+			\item Cephx authentication settings
+			\item Types of VM migrations
+			\item Live VM migrations with Ceph
+			\item Things we left undone
+			\item Diagnostics
+			\item Troubleshooting
+			\item Resources
+		\end{enumerate}
+	\end{columns}
 \end{frame}
 
 \begin{frame}
 	\frametitle{What is Ceph?}
-	Ceph is a free clustered storage platform that provides unified
+	Ceph is a free distributed storage platform that provides unified
 	object, block, and file storage.
 
 	\begin{description}
-		\item[Object Storage] RADOS objects support
-			snapshotting, replication, and consistency.
+		\item[Object Storage] Native RADOS objects: hash-based
+			placement, synchronous replication;\\
+			radosgw provides S3 and Swift compatible REST access to
+			RGW objects (striped over multiple RADOS objects).
 		\item[Block Storage] RBD block devices are thinly
 			provisioned over RADOS objects and can be
 			accessed by QEMU via librbd library.\\
 			\includegraphics[height=2.5cm]{ceph-rbd}
 		\item[File Storage] CephFS metadata servers (MDS)
-			provide a POSIX-compliant overlay over RADOS.
+			provide a POSIX-compliant file system backed by RADOS.
 	\end{description}
 \end{frame}
 
 \begin{frame}
 	\frametitle{What is Mirantis OpenStack?}
+	\begin{columns}[T]
+		\column{.5\textwidth}
+		\begin{description}
+			\item[OpenStack] is an open source cloud computing
+				platform.
+		\end{description}
+		\column{.5\textwidth}
+		\includegraphics[height=2cm]{openstack-components}
+	\end{columns}
+
 	\begin{description}
-		\item[OpenStack] is an open source cloud computing
-			platform.\\
-			\vspace{0.5ex}
-			\includegraphics[height=2cm]{openstack-components}
-		\item[Mirantis] ships hardened OpenStack packages and
-			provides Fuel utility to simplify deployment of
-			OpenStack and Ceph.
-		\item[Fuel] uses Cobbler, MCollective, and Puppet to
-			discover nodes, provision OS, and setup
-			OpenStack services.\\
-			\vspace{0.5ex}
-			\includegraphics[height=3.8cm]{fuel-components}
+		\item[Mirantis] ships hardened OpenStack packages and provides
+			Fuel utility to automate deployment and lifecycle
+			management of OpenStack environments.
 	\end{description}
+
+	\begin{columns}[T]
+		\column{.43\textwidth}
+		\begin{description}
+			\item[Fuel] uses Cobbler, MCollective, and Puppet to
+				discover nodes, provision OS, and setup
+				OpenStack services.\\
+		\end{description}
+		\column{.65\textwidth}
+		\includegraphics[height=3.8cm]{fuel-components}
+	\end{columns}
 \end{frame}
 
 \begin{frame}
-	\frametitle{How does Ceph fit into OpenStack?}
-	\begin{columns}
+	\frametitle{How does Ceph fit with OpenStack?}
+	\begin{columns}[T]
 		\column{.6\textwidth}
-		RBD drivers for OpenStack make libvirt configure the
-		QEMU interface to librbd.
+		RBD drivers for OpenStack tell libvirt to configure the QEMU
+		interface to librbd.
 
 		\vspace{2ex}
 		Ceph benefits:
 		\begin{itemize}
-			\item Multi-node striping and redundancy for
-				block storage (Cinder volumes and Nova
-				ephemeral drives)
-			\item Copy-on-write cloning of images to
-				volumes and instances
-			\item Unified storage pool for all types of
-				storage (object, block, POSIX)
-			\item Live migration of Ceph-backed instances
+			\item Multi-node striping and redundancy for block
+				storage (Cinder volumes, Nova ephemeral drives,
+				Glance images)
+			\item Copy-on-write cloning of images to volumes and
+				ephemeral disks, volumes to snapshots
+			\item Unified pool of storage nodes for all types of
+				data (objects, block devices, files)
+			\item Live migration of Ceph-backed VMs
 		\end{itemize}
 
 		\column{.3\textwidth}
 		\includegraphics[height=6.5cm]{ceph-rbd-openstack}
 	\end{columns}
-
-	\vspace{2ex}
-	Problems: sensitivity to clock drift, multi-site (async
-	replication in Emperor), block storage density (erasure coding
-	in Firefly), Swift API gap (rbd backend for Swift)
 \end{frame}
 
 \begin{frame}
-	\frametitle{What has Fuel ever done for Ceph?}
+	\frametitle{Where does Ceph not fit with OpenStack?}
+	\begin{itemize}
+		\item RBD is not suitable for {\color{mirantisred}IOPS heavy
+			workloads}:
+			\begin{itemize}
+				\item 100 IOPS per VM (HDD),
+					10K IOPS per VM (SSD),
+					10-100 ms latency
+				\item high CPU load on OSD at high IOPS
+					(each OSD needs 2 cores)
+			\end{itemize}
+		\item Low {\color{mirantisred}storage density}: requires
+			erasure coding (preferrably combined with SSD-backed
+			caching pools) to reduce replication factor below 3 for
+			cold data
+		\item {\color{mirantisred}Multi-site operation} options are
+			limited:
+			\begin{itemize}
+				\item asynchronous replication is only
+					implemented for radosgw and not for
+					RBD
+				\item master-slave mode is only useful for DR
+					sites
+				\item replication factor is multiplied by the
+					number of sites
+			\end{itemize}
+		\item Ceph is sensitivite to {\color{mirantisred}clock drift}
+			and {\color{mirantisred}network latency}
+		\item {\color{mirantisred}Swift API} gaps in radosgw: bulk
+			operations, custom account metadata, static website,
+			expiring objects, object versioning, CORS
+		\item Some code paths in OpenStack still do not work correctly
+			with RBD:
+			\begin{itemize}
+				\item evacuate
+				\item create image from volume
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{What has Fuel got to do with Ceph?}
 	\begin{enumerate}
-		\item Fuel deploys Ceph Monitors and OSDs on dedicated
-			nodes or in combination with OpenStack
+		\item Fuel deploys Ceph Monitors on controllers, and OSDs on
+			dedicated nodes or in combination with OpenStack
 			components.\\
 			\includegraphics[height=3.7cm]{openstack-nodes}
-		\item Creates partitions for OSDs when nodes are
-			provisioned.
+			\vspace{-0.3cm}
+		\item Creates XFS partitions for OSDs when provisioning
+			ceph-osd nodes.
 		\item Creates separate RADOS pools and sets up Cephx
 			authentication for Cinder, Glance, and Nova.
-		\item Configures Cinder, Glance, and Nova to use RBD
-			backend with the right pools and credentials.
-		\item Deploys RADOS Gateway (S3 and Swift API frontend
-			to Ceph) behind HAProxy on controller nodes.
+		\item Configures Cinder, Glance, and Nova to use RBD backend
+			with the right RADOS pools and Cephx credentials.
+		\item Deploys radosgw behind HAProxy on controller nodes and
+			registers it with Keystone.
 	\end{enumerate}
 \end{frame}
 
 \begin{frame}
 	\frametitle{What does it look like?}
-	Select storage options $\Rightarrow$ assign roles to nodes $\Rightarrow$ allocate disks:\\
-	\vspace{3ex}
-	\makebox[\textwidth][c]{\includegraphics[width=1.18\textwidth]{fuel-ceph-screenshots}}
+	Select storage options $\Rightarrow$ Assign roles to nodes $\Rightarrow$ Allocate disks:\\
+	\makebox[\textwidth][c]{\includegraphics[width=1.12\textwidth]{fuel-ceph-screenshots}}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Things we've done}
+	\frametitle{Things we do for Ceph in Fuel}
 	\begin{enumerate}
-		\item Set the right GPT type GUIDs on OSD and journal
-			partitions for udev automount rules
-		\item ceph-deploy: set up root SSH between Ceph nodes
+		\item Zap old partitions out of the way of ceph-disk (twice: in
+			MCAgent on node delete, in pmanager during node
+			provisioning)
+		\item Set the right GPT Type GUIDs on OSD and journal
+			partitions for Ceph's udev automount rules
+		\item Set up root SSH between Ceph nodes for ceph-deploy
+		\item Patch ceph-deploy to tolerate reordering of lines in
+			ceph.conf
 		\item Basic Ceph settings: cephx, pool size, networks
-		\item Cephx: ceph auth command line can't be split
-		\item Rados Gateway: has to be the Inktank's fork of
-			FastCGI, set an infinite revocation interval for
-			UUID auth tokens to work
-		\item Patch Cinder to convert non-raw images when
-			creating an RBD backed volume from Glance
-		\item Patch Nova: clone RBD backed Glance images into
-			RBD backed ephemeral volumes, pass RBD user to
-			qemu-img
-		\item Ephemeral RBD: disable SSH key injection, set up
-			Nova, libvirt, and QEMU for live migrations
+		\item List all Monitors in ceph.conf on each Ceph node
+		\item Calculate initial PG numbers based on the number of OSDs
+		\item radosgw: install Inktank's fork of FastCGI; set an
+			infinite revocation interval for UUID auth tokens
+		\item Live migrations for ephemeral backed VMs: disable SSH key
+			injection; configure Nova, libvirt, and QEMU
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Things we do for Ceph in OpenStack}
+	Cinder patches:
+	\begin{enumerate}
+		\item Convert non-raw images when creating an
+			RBD backed volume from Glance
+	\end{enumerate}
+
+	Nova patches:
+	\begin{enumerate}
+		\item Pass RBD user when invoking qemu-img CLI
+		\item Use librbd instead of rbd CLI for most
+			image operations
+		\item Clone RBD backed Glance images into RBD
+			backed ephemeral volumes
+		\item Use Ceph cluster stats when reporting
+			disk capacity for quotas
+		\item Update VNC listen address on live migration
+		\item Decouple shared block storage from shared libvirt
+			instance path in the live migrations logic
+		\item Decouple shared block storage in the evacuate logic
+			(pending for Juno)
 	\end{enumerate}
 \end{frame}
 
 \begin{frame}[fragile]
 	\frametitle{Disk partitioning for Ceph OSD}
-	Flow of disk partitioning information during discovery,
-	configuration, provisioning, and deployment:\\
+	Flow of disk partitioning information during discovery, configuration,
+	provisioning, and deployment of ceph-osd nodes:\\
 	\vspace{1ex}
 	\includegraphics[height=3.7cm]{osd-disks}
 
@@ -229,9 +320,9 @@
 			\end{lstlisting}
 	\end{description}
 
-	{\color{mirantisred}Watch out:} Cephx is easily tripped up by
-	unexpected whitespace in ceph auth command line parameters, so
-	we have to keep them all on a single line.
+	{\color{mirantisred}Watch out:} Cephx used to be easily tripped up by
+	unexpected whitespace in ceph auth command line parameters, so we had
+	to keep them all on a single line.
 \end{frame}
 
 \begin{frame}
@@ -265,10 +356,8 @@
 		\item Enable native peer to peer live migration:\\
 			\includegraphics[height=3cm]{libvirt-p2p-migration}\\
 			%libvirt flags: live, p2p, undefine-source, persist
-			libvirt VIR\_MIGRATE\_* flags: LIVE, PEER2PEER,
-			UNDEFINE\_SOURCE, PERSIST\_DEST
-		\item Patch Nova to decouple shared volumes from shared
-			libvirt metadata logic during live migration
+			libvirt VIR\_MIGRATE\_* flags:\\
+			LIVE, PEER2PEER, UNDEFINE\_SOURCE, PERSIST\_DEST
 		\item Set VNC listen address to 0.0.0.0 and block VNC
 			from outside the management network in iptables
 		\item Open ports 49152+ between computes for QEMU
@@ -279,43 +368,73 @@
 \begin{frame}
 	\frametitle{Things we left undone}
 	\begin{enumerate}
-		\item Non-root user with sudo for ceph-deploy
-		\item Calculate PG numbers based on the number of OSDs
 		\item Ceph public network should go to a second storage
-			network instead of management
-		\item Dedicated Monitor nodes, list all Monitors in
-			ceph.conf on each Ceph node
-		\item Multi-backend configuration for Cinder
-		\item A better way to configure pools for OpenStack
-			services (than CEPH\_ARGS in the init script)
-		\item Make Nova update VM's VNC listen address to
-			vncserver\_listen of the destination compute
-			after migration
-		\item Replace 'qemu-img convert' with clone\_image() in
-			LibvirtDriver.snapshot() in Nova
+			network instead of management (blueprint:
+			\href{https://blueprints.launchpad.net/fuel/+spec/fuel-storage-networks}{fuel-storage-networks})
+		\item Dedicated Monitor and radosgw nodes (blueprint:
+			\href{https://blueprints.launchpad.net/fuel/+spec/fuel-ceph-roles}{fuel-ceph-roles})
+		\item Use clone\_image() when creating Glance images from
+			Cinder volumes and Nova ephemeral disks, set more
+			permissive Cephx ACLs across pools (bug: 
+			\href{https://bugs.launchpad.net/fuel/+bug/1262914}{\#1262914})
+		\item Multi-backend configuration for Cinder (blueprint:
+			\href{https://blueprints.launchpad.net/fuel/+spec/fuel-cinder-multi-backend}{fuel-cinder-multi-backend})
+		\item Replace ceph-deploy with direct use of Ceph CLI
 	\end{enumerate}
 \end{frame}
 
 \begin{frame}[fragile]
-	\frametitle{Diagnostics and troubleshooting}
+	\frametitle{Diagnostics}
 	\lstset{language=bash,basicstyle=\ttfamily\footnotesize}
 
+	General health status of a Ceph cluster:
+	\vspace{-2mm}
 	\begin{lstlisting}
 	ceph -s
+	\end{lstlisting}
+
+	Status of individual OSDs:
+	\vspace{-2mm}
+	\begin{lstlisting}
 	ceph osd tree
+	\end{lstlisting}
+
+	Create empty Cinder volume:
+	\vspace{-2mm}
+	\begin{lstlisting}
 	cinder create 1
+	\end{lstlisting}
+
+	Disk usage across all RADOS pools:
+	\vspace{-2mm}
+	\begin{lstlisting}
 	rados df
+	\end{lstlisting}
+
+	Examine all RBD volumes in a single RADOS pool:
+	\vspace{-2mm}
+	\begin{lstlisting}
+	rbd ls -l volumes
+	\end{lstlisting}
+
+	Upload a raw image to Glance, launch and live-migrate a VM:
+	\vspace{-2mm}
+	\begin{lstlisting}
 	qemu-img convert -O raw cirros.qcow2 cirros.raw
 	glance image-create --name cirros-raw --is-public yes \
 	  --container-format bare --disk-format raw < cirros.raw
 	nova boot --flavor 1 --image cirros-raw vm0
 	nova live-migration vm0 node-3
 	\end{lstlisting}
+\end{frame}
 
+\begin{frame}
+	\frametitle{Troubleshooting}
 	\begin{description}
 		\item[disk partitioning failed during provisioning] --
 			check if traces of previous partition tables are
 			left on any drives
+		\item['ceph-deploy osd activate' failed] -- same as above
 		\item['ceph-deploy config pull' failed] -- check if the
 			node can ssh to the primary controller over
 			management network
@@ -323,37 +442,25 @@
 			ntpd settings, make sure your NTP server is
 			reachable from all nodes
 		\item[ENOSPC when storing small objects in RGW] -- try
-			setting a smaller rgw object stripe size
+			reducing rgw object stripe size
 	\end{description}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Resources}
 	Read the docs:\\
-	\url{http://ceph.com/docs/next/rbd/rbd-openstack/}\\
-	\url{http://docs.mirantis.com/fuel/fuel-4.0/}\\
-	\url{http://libvirt.org/migration.html}\\
-	\url{http://docs.openstack.org/admin-guide-cloud/content/ch\_introduction-to-openstack-compute.html}
+	\url{http://ceph.com/docs/master/rbd/rbd-openstack/}\\
+	\url{http://docs.mirantis.com/fuel/fuel-5.1/}\\
+	\url{http://libvirt.org/migration.html}
 
 	\vspace{2ex}
 	Get the code:\\
 	\begin{itemize}
-		\item \href{http://software.mirantis.com/}{Mirantis OpenStack} ISO image and VirtualBox scripts,\\
-		\item \href{https://github.com/stackforge/fuel-library/tree/master/deployment/puppet/ceph}{ceph} Puppet module for Fuel,\\
-		\item Josh Durgin's \href{https://github.com/jdurgin/nova/commits/havana-ephemeral-rbd}{havana-ephemeral-rbd} branch for Nova.
+		\item \href{http://software.mirantis.com/}{Mirantis OpenStack} ISO image and VirtualBox scripts\\
+		\item \href{https://github.com/stackforge/fuel-library/tree/master/deployment/puppet/ceph}{ceph} Puppet module for Fuel\\
+		\item Nova branches: \href{https://github.com/jdurgin/nova/commits/havana-ephemeral-rbd}{havana-ephemeral-rbd},
+			\href{https://github.com/angdraug/nova/commits/rbd-ephemeral-clone-stable-icehouse}{rbd-ephemeral-clone-stable-icehouse}
 	\end{itemize}
-
-	\vspace{2ex}
-	Vote on Nova bugs:\\
-	\href{https://bugs.launchpad.net/fuel/+bug/1226351}{\#1226351},
-	\href{https://bugs.launchpad.net/fuel/+bug/1261675}{\#1261675},
-	\href{https://bugs.launchpad.net/fuel/+bug/1262450}{\#1262450},
-	\href{https://bugs.launchpad.net/fuel/+bug/1262914}{\#1262914}.
-
-	\vspace{2ex}
-	Sign up for
-	\href{http://bit.ly/JZIgRD}{Mirantis and Inktank webcast on Ceph
-	and OpenStack}.
 \end{frame}
 
 \end{document}

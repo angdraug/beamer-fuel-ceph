@@ -13,4 +13,4 @@ fuel-ceph.pdf: fuel-ceph.tex $(IMAGES)
 	inkscape -f $< -A $*.pdf
 
 %.svg: %.txt
-	./asciitosvg $< $@
+	a2s -i$< -o$@
