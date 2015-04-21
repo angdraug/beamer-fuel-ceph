@@ -33,7 +33,7 @@
 %
 \title{\fontsize{26}{0}\selectfont Ceph in Mirantis OpenStack}
 \author{\vspace{-1mm}\includegraphics[height=5cm]{Vector_RGB_MirantisLogo}\\Dmitry Borodaenko\vspace{-10mm}}
-\date{Mountain View, 2014}
+\date{Mountain View, 2015}
 %
 \begin{document}
 
@@ -181,7 +181,7 @@
 		\item Some code paths in OpenStack still do not work correctly
 			with RBD:
 			\begin{itemize}
-				\item evacuate
+				\item evacuate (fixed in Kilo)
 				\item create image from volume
 			\end{itemize}
 	\end{itemize}
@@ -254,7 +254,7 @@
 		\item Decouple shared block storage from shared libvirt
 			instance path in the live migrations logic
 		\item Decouple shared block storage in the evacuate logic
-			(pending for Juno)
+			(landed upstream in Kilo)
 	\end{enumerate}
 \end{frame}
 
@@ -450,7 +450,7 @@
 	\frametitle{Resources}
 	Read the docs:\\
 	\url{http://ceph.com/docs/master/rbd/rbd-openstack/}\\
-	\url{http://docs.mirantis.com/fuel/fuel-5.1/}\\
+	\url{http://docs.mirantis.com/fuel/fuel-6.0/}\\
 	\url{http://libvirt.org/migration.html}
 
 	\vspace{2ex}
